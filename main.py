@@ -13,8 +13,8 @@ while True:
     python_paths = []
     path_variable = os.getenv("PATH")
     if path_variable is None:
-        print("PATH variable not found")
-        break
+        print("PATH variable not found. Please add python to your PATH variable.")
+        exit()
     paths = path_variable.split(';')
     python_path_regex = re.compile(r"\\python\\python(\d+)\\$", re.IGNORECASE)
     for i, path in enumerate(paths):
