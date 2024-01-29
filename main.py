@@ -16,7 +16,7 @@ while True:
         print("PATH variable not found")
         break
     paths = path_variable.split(';')
-    python_path_regex = re.compile(r"\\python\\python(\d+)\\", re.IGNORECASE)
+    python_path_regex = re.compile(r"\\python\\python(\d+)\\$", re.IGNORECASE)
     for i, path in enumerate(paths):
         match = python_path_regex.search(path)
         if match is not None:
@@ -26,8 +26,10 @@ while True:
             except Exception as e:
                 print(tb.format_exc())
                 version_number = ""
-
-            python_paths.append({"path": path, "version": version_number_int, "version_string": version_number})
+            else:
+                full_path = {"path": path, "version": version_number_int, "version_string": version_number}
+                if full_path not in python_paths:
+                    python_paths.append(full_path)
     if len(python_paths) == 0:
         print("No python paths found. Please add python to your PATH variable.")
         exit()
