@@ -66,7 +66,7 @@ while True:
                         else:
                             try:
                                 print(f"Using python version {python_paths[python_path_index]['version']} to create a virtual environment for '{project_name}' in '{project_path}'.")
-                                subprocess_args = [f"{python_paths[python_path_index]['path']}\\Python{python_paths[python_path_index]['version_string']}.exe", "-m", "venv", f"{project_path}\{project_name}\env"]
+                                subprocess_args = [f"{python_paths[python_path_index]['path']}\\Python{python_paths[python_path_index]['version_string']}.exe", "-m", "venv", f"{project_path}\\{project_name}\\env"]
                                 subprocess.run(subprocess_args)
                             except Exception as e:
                                 print(tb.format_exc())
